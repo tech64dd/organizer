@@ -16,6 +16,8 @@ wxIMPLEMENT_APP(MyApp);
 class mainwin : public mainwin_base
 {
 public:
+    mainwin(wxWindow* parent) : mainwin_base(parent) {}
+
     void exitapp(wxCommandEvent& event)
     {
         Close(true);
