@@ -1,10 +1,10 @@
 #include <wx/wx.h>
 #include <wx/treectrl.h>
-#include <wx/xrc/xmlres.h>
 #include <wx/event.h>
 #include <wx/frame.h>
 #include <wx/calctrl.h>
 #include <wx/log.h>
+#include <nlohmann/json.hpp>
 #include "../gui/MyProjectBase.h"
 
 class MyApp : public wxApp

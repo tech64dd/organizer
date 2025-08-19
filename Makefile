@@ -14,7 +14,7 @@ OBJECTS = gui/MyProjectBase.o src/$(PROGRAM).o
 all:    $(PROGRAM)
 
 $(PROGRAM):     $(OBJECTS)
-	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --libs`
+	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --libs` `pkg-config nlohmann_json --cflags`
 
 clean:
 	rm -f src/*.o $(PROGRAM)
