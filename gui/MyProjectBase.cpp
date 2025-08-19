@@ -64,3 +64,33 @@ mainwin_base::mainwin_base( wxWindow* parent, wxWindowID id, const wxString& tit
 mainwin_base::~mainwin_base()
 {
 }
+
+newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
+{
+	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
+
+	wxBoxSizer* bSizer4;
+	bSizer4 = new wxBoxSizer( wxVERTICAL );
+
+	calendar = new wxCalendarCtrl( this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxCAL_MONDAY_FIRST|wxCAL_SHOW_HOLIDAYS );
+	bSizer4->Add( calendar, 0, wxALL, 5 );
+
+	timepicker = new wxTimePickerCtrl( this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxTP_DEFAULT );
+	bSizer4->Add( timepicker, 0, wxALL, 5 );
+
+	deadline_check = new wxCheckBox( this, wxID_ANY, _("Enable deadline"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer4->Add( deadline_check, 0, wxALL, 5 );
+
+	confirm = new wxButton( this, wxID_ANY, _("Done"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer4->Add( confirm, 0, wxALL, 5 );
+
+
+	this->SetSizer( bSizer4 );
+	this->Layout();
+
+	this->Centre( wxBOTH );
+}
+
+newtask_base::~newtask_base()
+{
+}

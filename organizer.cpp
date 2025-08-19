@@ -1,9 +1,11 @@
 #include <wx/wx.h>
 #include <wx/treectrl.h>
 #include <wx/xrc/xmlres.h>
+#include <wx/event.h>
+#include <wx/frame.h>
+#include <wx/calctrl.h>
+#include <wx/log.h>
 #include "gui/MyProjectBase.h"
-#include "wx/event.h"
-#include "wx/frame.h"
 
 class MyApp : public wxApp
 {
@@ -13,19 +15,47 @@ public:
 
 wxIMPLEMENT_APP(MyApp);
 
+class newtask : public newtask_base
+{
+public:
+    newtask(wxWindow* parent) : newtask_base(parent) {
+        confirm->Bind(wxEVT_BUTTON, &newtask::donemake, this);
+    }
+
+    void donemake(wxCommandEvent& event)
+    {
+        if (deadline_check->GetValue())
+        {
+            wxDateTime date = calendar->GetDate();
+            wxDateTime time = timepicker->GetValue();
+
+            wxLogMessage("%s %s", date.FormatISODate(), time.FormatISOTime());
+        }
+        else
+        {
+            wxLogMessage("lol no");
+        }
+    }
+};
+
 class mainwin : public mainwin_base
 {
 public:
     mainwin(wxWindow* parent) : mainwin_base(parent) {
+        Bind(wxEVT_MENU, &mainwin::exitapp, this, wxID_EXIT);
+        Bind(wxEVT_TOOL, &mainwin::opendialog, this, tb_new->GetId());
+    }
 
+    void opendialog(wxCommandEvent& event)
+    {
+        newtask* win = new newtask(nullptr);
+        win->Show(true);
     }
 
     void exitapp(wxCommandEvent& event)
     {
         Close(true);
     }
-private:
-    wxDECLARE_EVENT_TABLE();
 };
 
 bool MyApp::OnInit()
@@ -34,7 +64,3 @@ bool MyApp::OnInit()
     win->Show(true);
     return true;
 }
-
-wxBEGIN_EVENT_TABLE(mainwin, mainwin_base)
-    EVT_MENU(wxID_EXIT, mainwin::exitapp)
-wxEND_EVENT_TABLE()
