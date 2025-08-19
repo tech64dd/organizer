@@ -72,6 +72,9 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 
+	taskName_input = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer4->Add( taskName_input, 0, wxALL|wxEXPAND, 5 );
+
 	calendar = new wxCalendarCtrl( this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxCAL_MONDAY_FIRST|wxCAL_SHOW_HOLIDAYS );
 	bSizer4->Add( calendar, 0, wxALL, 5 );
 
@@ -81,8 +84,8 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	deadline_check = new wxCheckBox( this, wxID_ANY, _("Enable deadline"), wxDefaultPosition, wxDefaultSize, 0 );
 	bSizer4->Add( deadline_check, 0, wxALL, 5 );
 
-	confirm = new wxButton( this, wxID_ANY, _("Done"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( confirm, 0, wxALL, 5 );
+	confirm_button = new wxButton( this, wxID_ANY, _("Done"), wxDefaultPosition, wxDefaultSize, 0 );
+	bSizer4->Add( confirm_button, 0, wxALL, 5 );
 
 
 	this->SetSizer( bSizer4 );

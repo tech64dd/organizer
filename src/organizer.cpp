@@ -19,13 +19,13 @@ class newtask : public newtask_base
 {
 public:
     newtask(wxWindow* parent) : newtask_base(parent) {
-        confirm->Bind(wxEVT_BUTTON, &newtask::donemake, this);
+        confirm_button->Bind(wxEVT_BUTTON, &newtask::donemake, this);
         this->Bind(wxEVT_CLOSE_WINDOW, &newtask::onClose, this);
     }
 
     void donemake(wxCommandEvent& event)
     {
-        if (deadline_check->GetValue())
+        if (deadline_check->GetValue() && !taskName_input->GetLineLength(0) == 0)
         {
             wxDateTime date = calendar->GetDate();
             wxDateTime time = timepicker->GetValue();
@@ -49,10 +49,11 @@ class mainwin : public mainwin_base
 public:
     mainwin(wxWindow* parent) : mainwin_base(parent) {
         Bind(wxEVT_MENU, &mainwin::exitapp, this, wxID_EXIT);
-        Bind(wxEVT_TOOL, &mainwin::opendialog, this, tb_new->GetId());
+        Bind(wxEVT_TOOL, &mainwin::open_newtask, this, tb_new->GetId());
+        statusbar1->SetStatusText("Welcome to Organizer!");
     }
 
-    void opendialog(wxCommandEvent& event)
+    void open_newtask(wxCommandEvent& event)
     {
         newtask* win = new newtask(this);
         this->Disable();

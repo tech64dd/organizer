@@ -24,6 +24,7 @@
 #include <wx/toolbar.h>
 #include <wx/statusbr.h>
 #include <wx/frame.h>
+#include <wx/textctrl.h>
 #include <wx/calctrl.h>
 #include <wx/timectrl.h>
 #include <wx/dateevt.h>
@@ -70,12 +71,13 @@ class newtask_base : public wxFrame
 	private:
 
 	protected:
+		wxTextCtrl* taskName_input;
 
 	public:
 		wxCalendarCtrl* calendar;
 		wxTimePickerCtrl* timepicker;
 		wxCheckBox* deadline_check;
-		wxButton* confirm;
+		wxButton* confirm_button;
 
 		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 379,395 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
 
