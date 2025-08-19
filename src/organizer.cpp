@@ -5,7 +5,7 @@
 #include <wx/frame.h>
 #include <wx/calctrl.h>
 #include <wx/log.h>
-#include "gui/MyProjectBase.h"
+#include "../gui/MyProjectBase.h"
 
 class MyApp : public wxApp
 {
@@ -20,6 +20,7 @@ class newtask : public newtask_base
 public:
     newtask(wxWindow* parent) : newtask_base(parent) {
         confirm->Bind(wxEVT_BUTTON, &newtask::donemake, this);
+        this->Bind(wxEVT_CLOSE_WINDOW, &newtask::onClose, this);
     }
 
     void donemake(wxCommandEvent& event)
@@ -36,6 +37,11 @@ public:
             wxLogMessage("lol no");
         }
     }
+    void onClose(wxCloseEvent& event)
+    {
+        GetParent()->Enable();
+        event.Skip();
+    }
 };
 
 class mainwin : public mainwin_base
@@ -48,7 +54,8 @@ public:
 
     void opendialog(wxCommandEvent& event)
     {
-        newtask* win = new newtask(nullptr);
+        newtask* win = new newtask(this);
+        this->Disable();
         win->Show(true);
     }
 
