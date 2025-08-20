@@ -66,7 +66,7 @@ mainwin_base::~mainwin_base()
 {
 }
 
-newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxFrame( parent, id, title, pos, size, style )
+newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style ) : wxDialog( parent, id, title, pos, size, style )
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
@@ -83,9 +83,9 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	bSizer4->Add( sbSizer5, 0, wxEXPAND, 5 );
 
 	wxStaticBoxSizer* sbSizer4;
-	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Deadline") ), wxVERTICAL );
+	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Due date") ), wxVERTICAL );
 
-	deadline_check = new wxCheckBox( sbSizer4->GetStaticBox(), wxID_ANY, _("Enable deadline"), wxDefaultPosition, wxDefaultSize, 0 );
+	deadline_check = new wxCheckBox( sbSizer4->GetStaticBox(), wxID_ANY, _("Enable due date"), wxDefaultPosition, wxDefaultSize, 0 );
 	sbSizer4->Add( deadline_check, 0, wxALL, 5 );
 
 	wxGridSizer* gSizer3;
@@ -101,7 +101,7 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	sbSizer4->Add( gSizer3, 1, wxEXPAND, 5 );
 
 
-	bSizer4->Add( sbSizer4, 1, 0, 5 );
+	bSizer4->Add( sbSizer4, 1, wxEXPAND, 5 );
 
 
 	bSizer4->Add( 0, 5, 0, 0, 5 );

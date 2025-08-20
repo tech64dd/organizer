@@ -44,12 +44,10 @@ public:
     }
     void onClose(wxCloseEvent& event)
     {
-        GetParent()->Enable();
         event.Skip();
     }
     void onCancel(wxCommandEvent& event)
     {
-        GetParent()->Enable();
         this->Show(false);
     }
 };
@@ -66,9 +64,7 @@ public:
     void open_newtask(wxCommandEvent& event)
     {
         newtask* win = new newtask(this);
-        this->Disable();
-        win->Raise();
-        win->Show(true);
+        win->ShowModal();
     }
 
     void exitapp(wxCommandEvent& event)

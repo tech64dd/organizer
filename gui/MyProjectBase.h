@@ -31,6 +31,7 @@
 #include <wx/timectrl.h>
 #include <wx/dateevt.h>
 #include <wx/button.h>
+#include <wx/dialog.h>
 
 ///////////////////////////////////////////////////////////////////////////
 
@@ -66,7 +67,7 @@ class mainwin_base : public wxFrame
 ///////////////////////////////////////////////////////////////////////////////
 /// Class newtask_base
 ///////////////////////////////////////////////////////////////////////////////
-class newtask_base : public wxFrame
+class newtask_base : public wxDialog
 {
 	private:
 
@@ -81,7 +82,7 @@ class newtask_base : public wxFrame
 		wxButton* actionbuttonsSave;
 		wxButton* actionbuttonsCancel;
 
-		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 379,395 ), long style = wxDEFAULT_FRAME_STYLE|wxFRAME_TOOL_WINDOW|wxTAB_TRAVERSAL );
+		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 396,411 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
 
 		~newtask_base();
 
