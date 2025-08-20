@@ -13,6 +13,7 @@ mainwin_base::mainwin_base( wxWindow* parent, wxWindowID id, const wxString& tit
 {
 	this->SetSizeHints( wxDefaultSize, wxDefaultSize );
 
+	wxBoxSizer* bSizer1;
 	bSizer1 = new wxBoxSizer( wxVERTICAL );
 
 	tasktree = new wxTreeCtrl( this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTR_DEFAULT_STYLE );
@@ -72,20 +73,50 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	wxBoxSizer* bSizer4;
 	bSizer4 = new wxBoxSizer( wxVERTICAL );
 
-	taskName_input = new wxTextCtrl( this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( taskName_input, 0, wxALL|wxEXPAND, 5 );
+	wxStaticBoxSizer* sbSizer5;
+	sbSizer5 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Task name") ), wxVERTICAL );
 
-	calendar = new wxCalendarCtrl( this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxCAL_MONDAY_FIRST|wxCAL_SHOW_HOLIDAYS );
-	bSizer4->Add( calendar, 0, wxALL, 5 );
+	taskName_input = new wxTextCtrl( sbSizer5->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0 );
+	sbSizer5->Add( taskName_input, 0, wxALL|wxEXPAND, 5 );
 
-	timepicker = new wxTimePickerCtrl( this, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxTP_DEFAULT );
-	bSizer4->Add( timepicker, 0, wxALL, 5 );
 
-	deadline_check = new wxCheckBox( this, wxID_ANY, _("Enable deadline"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( deadline_check, 0, wxALL, 5 );
+	bSizer4->Add( sbSizer5, 0, wxEXPAND, 5 );
 
-	confirm_button = new wxButton( this, wxID_ANY, _("Done"), wxDefaultPosition, wxDefaultSize, 0 );
-	bSizer4->Add( confirm_button, 0, wxALL, 5 );
+	wxStaticBoxSizer* sbSizer4;
+	sbSizer4 = new wxStaticBoxSizer( new wxStaticBox( this, wxID_ANY, _("Deadline") ), wxVERTICAL );
+
+	deadline_check = new wxCheckBox( sbSizer4->GetStaticBox(), wxID_ANY, _("Enable deadline"), wxDefaultPosition, wxDefaultSize, 0 );
+	sbSizer4->Add( deadline_check, 0, wxALL, 5 );
+
+	wxGridSizer* gSizer3;
+	gSizer3 = new wxGridSizer( 0, 2, 0, 0 );
+
+	calendar = new wxCalendarCtrl( sbSizer4->GetStaticBox(), wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxCAL_MONDAY_FIRST|wxCAL_SHOW_HOLIDAYS );
+	gSizer3->Add( calendar, 0, wxALL, 5 );
+
+	timepicker = new wxTimePickerCtrl( sbSizer4->GetStaticBox(), wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxTP_DEFAULT );
+	gSizer3->Add( timepicker, 1, wxALL, 5 );
+
+
+	sbSizer4->Add( gSizer3, 1, wxEXPAND, 5 );
+
+
+	bSizer4->Add( sbSizer4, 1, 0, 5 );
+
+
+	bSizer4->Add( 0, 5, 0, 0, 5 );
+
+	actionbuttons = new wxStdDialogButtonSizer();
+	actionbuttonsSave = new wxButton( this, wxID_SAVE );
+	actionbuttons->AddButton( actionbuttonsSave );
+	actionbuttonsCancel = new wxButton( this, wxID_CANCEL );
+	actionbuttons->AddButton( actionbuttonsCancel );
+	actionbuttons->Realize();
+
+	bSizer4->Add( actionbuttons, 0, wxEXPAND, 5 );
+
+
+	bSizer4->Add( 0, 5, 0, wxEXPAND, 5 );
 
 
 	this->SetSizer( bSizer4 );

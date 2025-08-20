@@ -25,10 +25,11 @@
 #include <wx/statusbr.h>
 #include <wx/frame.h>
 #include <wx/textctrl.h>
+#include <wx/statbox.h>
+#include <wx/checkbox.h>
 #include <wx/calctrl.h>
 #include <wx/timectrl.h>
 #include <wx/dateevt.h>
-#include <wx/checkbox.h>
 #include <wx/button.h>
 
 ///////////////////////////////////////////////////////////////////////////
@@ -43,7 +44,6 @@ class mainwin_base : public wxFrame
 	protected:
 
 	public:
-		wxBoxSizer* bSizer1;
 		wxTreeCtrl* tasktree;
 		wxMenuBar* m_menubar1;
 		wxMenu* filemenu;
@@ -71,15 +71,17 @@ class newtask_base : public wxFrame
 	private:
 
 	protected:
-		wxTextCtrl* taskName_input;
 
 	public:
+		wxTextCtrl* taskName_input;
+		wxCheckBox* deadline_check;
 		wxCalendarCtrl* calendar;
 		wxTimePickerCtrl* timepicker;
-		wxCheckBox* deadline_check;
-		wxButton* confirm_button;
+		wxStdDialogButtonSizer* actionbuttons;
+		wxButton* actionbuttonsSave;
+		wxButton* actionbuttonsCancel;
 
-		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 379,395 ), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL );
+		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 379,395 ), long style = wxDEFAULT_FRAME_STYLE|wxFRAME_TOOL_WINDOW|wxTAB_TRAVERSAL );
 
 		~newtask_base();
 

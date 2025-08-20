@@ -19,8 +19,13 @@ class newtask : public newtask_base
 {
 public:
     newtask(wxWindow* parent) : newtask_base(parent) {
-        confirm_button->Bind(wxEVT_BUTTON, &newtask::donemake, this);
+        actionbuttons->GetAffirmativeButton()->Bind(wxEVT_BUTTON, &newtask::donemake, this);
+        actionbuttons->GetCancelButton()->Bind(wxEVT_BUTTON, &newtask::onCancel, this);
         this->Bind(wxEVT_CLOSE_WINDOW, &newtask::onClose, this);
+        CallAfter([this]() {
+            taskName_input->SetFocus();
+        });
+
     }
 
     void donemake(wxCommandEvent& event)
@@ -42,6 +47,11 @@ public:
         GetParent()->Enable();
         event.Skip();
     }
+    void onCancel(wxCommandEvent& event)
+    {
+        GetParent()->Enable();
+        this->Show(false);
+    }
 };
 
 class mainwin : public mainwin_base
@@ -57,6 +67,7 @@ public:
     {
         newtask* win = new newtask(this);
         this->Disable();
+        win->Raise();
         win->Show(true);
     }
 
