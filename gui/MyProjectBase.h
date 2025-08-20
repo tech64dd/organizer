@@ -43,6 +43,8 @@ class mainwin_base : public wxFrame
 	private:
 
 	protected:
+		wxToolBarToolBase* tb_uncomplete;
+		wxToolBarToolBase* tb_delete;
 
 	public:
 		wxTreeCtrl* tasktree;
@@ -52,8 +54,8 @@ class mainwin_base : public wxFrame
 		wxMenuItem* m_separator2;
 		wxMenu* helpmenu;
 		wxToolBar* m_toolBar1;
-		wxToolBarToolBase* tb_new;
 		wxToolBarToolBase* tb_complete;
+		wxToolBarToolBase* tb_new;
 		wxToolBarToolBase* tb_edit;
 		wxToolBarToolBase* tb_sync;
 		wxStatusBar* statusbar1;

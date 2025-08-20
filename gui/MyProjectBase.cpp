@@ -25,6 +25,11 @@ mainwin_base::mainwin_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	m_menubar1 = new wxMenuBar( 0 );
 	filemenu = new wxMenu();
 	mb_sync = new wxMenuItem( filemenu, wxID_ANY, wxString( _("Synchronize") ) + wxT('\t') + wxT("CTRL+S"), wxEmptyString, wxITEM_NORMAL );
+	#ifdef __WXMSW__
+	mb_sync->SetBitmaps( wxArtProvider::GetBitmap( wxASCII_STR(wxART_GO_DIR_UP), wxASCII_STR(wxART_MENU) ) );
+	#elif (defined( __WXGTK__ ) || defined( __WXOSX__ ))
+	mb_sync->SetBitmap( wxArtProvider::GetBitmap( wxASCII_STR(wxART_GO_DIR_UP), wxASCII_STR(wxART_MENU) ) );
+	#endif
 	filemenu->Append( mb_sync );
 
 	m_separator2 = filemenu->AppendSeparator();
@@ -45,15 +50,21 @@ mainwin_base::mainwin_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	this->SetMenuBar( m_menubar1 );
 
 	m_toolBar1 = this->CreateToolBar( wxTB_HORIZONTAL, wxID_ANY );
-	tb_new = m_toolBar1->AddTool( wxID_ANY, _("New"), wxNullBitmap, wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Add a new task"), NULL );
+	tb_complete = m_toolBar1->AddTool( wxID_ANY, _("Complete"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_TICK_MARK), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Mark the selected task as completed"), NULL );
 
-	tb_complete = m_toolBar1->AddTool( wxID_ANY, _("Complete"), wxNullBitmap, wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Mark a task as completed"), NULL );
-
-	tb_edit = m_toolBar1->AddTool( wxID_ANY, _("Edit"), wxNullBitmap, wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Edit selected task"), NULL );
+	tb_uncomplete = m_toolBar1->AddTool( wxID_ANY, _("Uncomplete"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_CROSS_MARK), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Mark the selected task as incompleted"), NULL );
 
 	m_toolBar1->AddSeparator();
 
-	tb_sync = m_toolBar1->AddTool( wxID_ANY, _("Sync"), wxNullBitmap, wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Synchronize with server now"), NULL );
+	tb_new = m_toolBar1->AddTool( wxID_ANY, _("New"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_NEW), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Add a new task"), NULL );
+
+	tb_edit = m_toolBar1->AddTool( wxID_ANY, _("Edit"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_EDIT), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Edit selected task"), NULL );
+
+	tb_delete = m_toolBar1->AddTool( wxID_ANY, _("Delete"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_DELETE), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Delete the selected task"), NULL );
+
+	m_toolBar1->AddSeparator();
+
+	tb_sync = m_toolBar1->AddTool( wxID_ANY, _("Sync"), wxArtProvider::GetBitmap( wxASCII_STR(wxART_GO_DIR_UP), wxASCII_STR(wxART_TOOLBAR) ), wxNullBitmap, wxITEM_NORMAL, wxEmptyString, _("Synchronize with server now"), NULL );
 
 	m_toolBar1->Realize();
 

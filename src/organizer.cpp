@@ -4,6 +4,7 @@
 #include <wx/frame.h>
 #include <wx/calctrl.h>
 #include <wx/log.h>
+#include <wx/msgdlg.h>
 #include <nlohmann/json.hpp>
 #include "../gui/MyProjectBase.h"
 
@@ -22,6 +23,9 @@ public:
         actionbuttons->GetAffirmativeButton()->Bind(wxEVT_BUTTON, &newtask::donemake, this);
         actionbuttons->GetCancelButton()->Bind(wxEVT_BUTTON, &newtask::onCancel, this);
         this->Bind(wxEVT_CLOSE_WINDOW, &newtask::onClose, this);
+        deadline_check->Bind(wxEVT_COMMAND_CHECKBOX_CLICKED, &newtask::onDeadlineCheck, this);
+        calendar->Enable(false);
+        timepicker->Enable(false);
         CallAfter([this]() {
             taskName_input->SetFocus();
         });
@@ -30,16 +34,22 @@ public:
 
     void donemake(wxCommandEvent& event)
     {
-        if (deadline_check->GetValue() && !taskName_input->GetLineLength(0) == 0)
+        if (taskName_input->GetLineLength(0) == 0)
         {
-            wxDateTime date = calendar->GetDate();
-            wxDateTime time = timepicker->GetValue();
-
-            wxLogMessage("%s %s", date.FormatISODate(), time.FormatISOTime());
+            wxMessageBox("Task name must not be empty.", "Skill issue", wxOK | wxICON_ERROR);
+        }
+    }
+    void onDeadlineCheck(wxCommandEvent& event)
+    {
+        if (deadline_check->GetValue())
+        {
+            calendar->Enable(true);
+            timepicker->Enable(true);
         }
         else
         {
-            wxLogMessage("lol no");
+            calendar->Enable(false);
+            timepicker->Enable(false);
         }
     }
     void onClose(wxCloseEvent& event)

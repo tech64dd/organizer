@@ -152,7 +152,7 @@
           <property name="name">filemenu</property>
           <property name="permission">public</property>
           <object class="wxMenuItem" expanded="true">
-            <property name="bitmap"></property>
+            <property name="bitmap">Load From Art Provider; wxART_GO_DIR_UP; wxART_MENU</property>
             <property name="checked">0</property>
             <property name="enabled">1</property>
             <property name="help"></property>
@@ -259,7 +259,32 @@
         <property name="window_name"></property>
         <property name="window_style"></property>
         <object class="tool" expanded="true">
-          <property name="bitmap"></property>
+          <property name="bitmap">Load From Art Provider; wxART_TICK_MARK; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">wxID_ANY</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">Complete</property>
+          <property name="name">tb_complete</property>
+          <property name="permission">public</property>
+          <property name="statusbar">Mark the selected task as completed</property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="tool" expanded="true">
+          <property name="bitmap">Load From Art Provider; wxART_CROSS_MARK; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">wxID_ANY</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">Uncomplete</property>
+          <property name="name">tb_uncomplete</property>
+          <property name="permission">protected</property>
+          <property name="statusbar">Mark the selected task as incompleted</property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="toolSeparator" expanded="true">
+          <property name="permission">protected</property>
+        </object>
+        <object class="tool" expanded="true">
+          <property name="bitmap">Load From Art Provider; wxART_NEW; wxART_TOOLBAR</property>
           <property name="context_menu">0</property>
           <property name="id">wxID_ANY</property>
           <property name="kind">wxITEM_NORMAL</property>
@@ -270,18 +295,7 @@
           <property name="tooltip"></property>
         </object>
         <object class="tool" expanded="true">
-          <property name="bitmap"></property>
-          <property name="context_menu">0</property>
-          <property name="id">wxID_ANY</property>
-          <property name="kind">wxITEM_NORMAL</property>
-          <property name="label">Complete</property>
-          <property name="name">tb_complete</property>
-          <property name="permission">public</property>
-          <property name="statusbar">Mark a task as completed</property>
-          <property name="tooltip"></property>
-        </object>
-        <object class="tool" expanded="true">
-          <property name="bitmap"></property>
+          <property name="bitmap">Load From Art Provider; wxART_EDIT; wxART_TOOLBAR</property>
           <property name="context_menu">0</property>
           <property name="id">wxID_ANY</property>
           <property name="kind">wxITEM_NORMAL</property>
@@ -291,11 +305,22 @@
           <property name="statusbar">Edit selected task</property>
           <property name="tooltip"></property>
         </object>
-        <object class="toolSeparator" expanded="true">
+        <object class="tool" expanded="true">
+          <property name="bitmap">Load From Art Provider; wxART_DELETE; wxART_TOOLBAR</property>
+          <property name="context_menu">0</property>
+          <property name="id">wxID_ANY</property>
+          <property name="kind">wxITEM_NORMAL</property>
+          <property name="label">Delete</property>
+          <property name="name">tb_delete</property>
           <property name="permission">protected</property>
+          <property name="statusbar">Delete the selected task</property>
+          <property name="tooltip"></property>
+        </object>
+        <object class="toolSeparator" expanded="true">
+          <property name="permission">none</property>
         </object>
         <object class="tool" expanded="true">
-          <property name="bitmap"></property>
+          <property name="bitmap">Load From Art Provider; wxART_GO_DIR_UP; wxART_TOOLBAR</property>
           <property name="context_menu">0</property>
           <property name="id">wxID_ANY</property>
           <property name="kind">wxITEM_NORMAL</property>
