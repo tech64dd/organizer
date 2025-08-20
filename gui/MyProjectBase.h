@@ -84,7 +84,7 @@ class newtask_base : public wxDialog
 		wxButton* actionbuttonsSave;
 		wxButton* actionbuttonsCancel;
 
-		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 396,411 ), long style = wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP );
+		newtask_base( wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = _("Create a new task"), const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize( 396,411 ), long style = wxDEFAULT_DIALOG_STYLE );
 
 		~newtask_base();
 

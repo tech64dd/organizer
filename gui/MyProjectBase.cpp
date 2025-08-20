@@ -100,10 +100,13 @@ newtask_base::newtask_base( wxWindow* parent, wxWindowID id, const wxString& tit
 	sbSizer4->Add( deadline_check, 0, wxALL, 5 );
 
 	wxGridSizer* gSizer3;
-	gSizer3 = new wxGridSizer( 0, 2, 0, 0 );
+	gSizer3 = new wxGridSizer( 0, 3, 0, 0 );
 
 	calendar = new wxCalendarCtrl( sbSizer4->GetStaticBox(), wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxCAL_MONDAY_FIRST|wxCAL_SHOW_HOLIDAYS );
 	gSizer3->Add( calendar, 0, wxALL, 5 );
+
+
+	gSizer3->Add( 0, 0, 1, wxEXPAND, 5 );
 
 	timepicker = new wxTimePickerCtrl( sbSizer4->GetStaticBox(), wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize, wxTP_DEFAULT );
 	gSizer3->Add( timepicker, 1, wxALL, 5 );

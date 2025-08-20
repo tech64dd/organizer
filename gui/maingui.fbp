@@ -376,7 +376,7 @@
       <property name="name">newtask_base</property>
       <property name="pos"></property>
       <property name="size">396,411</property>
-      <property name="style">wxDEFAULT_DIALOG_STYLE|wxSTAY_ON_TOP</property>
+      <property name="style">wxDEFAULT_DIALOG_STYLE</property>
       <property name="subclass">; ; forward_declare</property>
       <property name="title">Create a new task</property>
       <property name="tooltip"></property>
@@ -550,7 +550,7 @@
               <property name="flag">wxEXPAND</property>
               <property name="proportion">1</property>
               <object class="wxGridSizer" expanded="true">
-                <property name="cols">2</property>
+                <property name="cols">3</property>
                 <property name="hgap">0</property>
                 <property name="minimum_size"></property>
                 <property name="name">gSizer3</property>
@@ -618,6 +618,16 @@
                     <property name="window_extra_style"></property>
                     <property name="window_name"></property>
                     <property name="window_style"></property>
+                  </object>
+                </object>
+                <object class="sizeritem" expanded="true">
+                  <property name="border">5</property>
+                  <property name="flag">wxEXPAND</property>
+                  <property name="proportion">1</property>
+                  <object class="spacer" expanded="true">
+                    <property name="height">0</property>
+                    <property name="permission">none</property>
+                    <property name="width">0</property>
                   </object>
                 </object>
                 <object class="sizeritem" expanded="false">
